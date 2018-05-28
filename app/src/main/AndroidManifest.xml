@@ -17,14 +17,16 @@
             </intent-filter>
         </activity>
 
+       <!-- android:readPermission="com.anjan.user06.sqlitedbwithcontentprovider.READ"
+        android:writePermission="com.anjan.user06.sqlitedbwithcontentprovider.WRITE"-->
+
         <provider
             android:name=".contentprovider.StudentProvider"
             android:authorities="com.anjan.user06.sqlitedbwithcontentprovider.contentprovider"
             android:exported="true"
             android:grantUriPermissions="true"
             android:label="CustomContentProvider"
-            android:readPermission="com.anjan.user06.sqlitedbwithcontentprovider.READ"
-            android:writePermission="com.anjan.user06.sqlitedbwithcontentprovider.WRITE" />
+            />
 
     </application>
 
