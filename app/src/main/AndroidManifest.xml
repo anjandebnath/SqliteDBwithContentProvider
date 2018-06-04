@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anjan.user06.sqlitedbwithcontentprovider">
 
+    <!--permission
+        android:name="ANJAN_PROVIDER.READ_PERMISSION"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="ANJAN_PROVIDER.WRITE_PERMISSION"
+        android:protectionLevel="normal" />-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +24,8 @@
             </intent-filter>
         </activity>
 
-       <!-- android:readPermission="com.anjan.user06.sqlitedbwithcontentprovider.READ"
-        android:writePermission="com.anjan.user06.sqlitedbwithcontentprovider.WRITE"-->
+       <!-- android:readPermission="ANJAN_PROVIDER.READ_PERMISSION"
+            android:writePermission="ANJAN_PROVIDER.WRITE_PERMISSION"-->
 
         <provider
             android:name=".contentprovider.StudentProvider"
