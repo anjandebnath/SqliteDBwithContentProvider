@@ -64,18 +64,18 @@ public class MainActivity extends AppCompatActivity {
                 String dept = editDept.getEditableText().toString();
                 String regId = editRegId.getEditableText().toString();
 
-                //dbManager.insert(name, dept, regId);
+                dbManager.insert(name, dept, regId);
 
 
 
-                ContentValues values = new ContentValues();
+                /*ContentValues values = new ContentValues();
                 values.put(StudentProvider.NAME, name);
                 values.put(StudentProvider.DEPT, dept);
                 values.put(StudentProvider.REG_ID, regId);
                 Uri uri = getContentResolver().insert(
                         StudentProvider.CONTENT_URI, values);
                 Toast.makeText(getBaseContext(),
-                        "Example: " + uri.toString() + " inserted!", Toast.LENGTH_LONG).show();
+                        "Example: " + uri.toString() + " inserted!", Toast.LENGTH_LONG).show();*/
 
             }
         });
@@ -86,15 +86,15 @@ public class MainActivity extends AppCompatActivity {
         btnFetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*studentsArrayList = (ArrayList<Students>) dbManager.fetchStudents();
+                studentsArrayList = (ArrayList<Students>) dbManager.fetchStudents();
                 mAdapter = new StudentsAdapter(studentsArrayList);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.setAdapter(mAdapter);*/
+                recyclerView.setAdapter(mAdapter);
 
 
-                String URL = StudentProvider.URL;
+                /*String URL = StudentProvider.URL;
                 Uri students = Uri.parse(URL);
                 Cursor c = getContentResolver().query(students, null, null, null, "name");
                 String result = "Results:";
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                 " has regId: " + c.getString(c.getColumnIndex(StudentProvider.REG_ID));
                     } while (c.moveToNext());
                     Toast.makeText(MainActivity.this, result, Toast.LENGTH_LONG).show();
-                }
+                }*/
             }
         });
     }

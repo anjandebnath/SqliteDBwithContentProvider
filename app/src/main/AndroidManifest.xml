@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anjan.user06.sqlitedbwithcontentprovider">
 
-    <!--permission
+    <!--
+    permission
         android:name="ANJAN_PROVIDER.READ_PERMISSION"
         android:protectionLevel="normal" />
     <permission
         android:name="ANJAN_PROVIDER.WRITE_PERMISSION"
-        android:protectionLevel="normal" />-->
-
+        android:protectionLevel="normal" />
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,24 +18,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
-       <!-- android:readPermission="ANJAN_PROVIDER.READ_PERMISSION"
-            android:writePermission="ANJAN_PROVIDER.WRITE_PERMISSION"-->
+        <!--
+            android:readPermission="ANJAN_PROVIDER.READ_PERMISSION"
+            android:writePermission="ANJAN_PROVIDER.WRITE_PERMISSION"
+        -->
 
         <provider
             android:name=".contentprovider.StudentProvider"
             android:authorities="com.anjan.user06.sqlitedbwithcontentprovider.contentprovider"
             android:exported="true"
             android:grantUriPermissions="true"
-            android:label="CustomContentProvider"
-            />
+            android:label="CustomContentProvider" />
 
+        <activity android:name=".AsyncLoaderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
