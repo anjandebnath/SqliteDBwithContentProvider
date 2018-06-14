@@ -124,6 +124,10 @@ public class DbManager {
 
     /**
      * update data via content provider
+     * @param db
+     * @param contentValues
+     * @param whereClause
+     * @param whereArgs
      * @return
      */
     public int update(SQLiteDatabase db, ContentValues contentValues, String whereClause, String[] whereArgs) {
@@ -133,9 +137,12 @@ public class DbManager {
 
     /**
      * delete record via content provider
-     * @param _id
+     * @param db
+     * @param whereClause
+     * @param whereArgs
      */
-    public void delete(long _id) {
-        database.delete(DatabaseHelper.TABLE_STUDENTS, DatabaseHelper._ID + "=" + _id, null);
+    public int delete(SQLiteDatabase db, String whereClause, String[] whereArgs) {
+        int i = db.delete(DatabaseHelper.TABLE_STUDENTS, whereClause, whereArgs);
+        return i;
     }
 }

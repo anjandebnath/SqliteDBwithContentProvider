@@ -162,12 +162,39 @@ public class StudentProvider extends ContentProvider{
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+
+        int count = 0;
+        switch (uriMatcher.match(uri)){
+            case STUDENTS:
+                count = dbManager.delete(database, selection, selectionArgs);
+                break;
+            case STUDENTS_ID:
+                dbManager.delete(database, selection, selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported URI " + uri);
+        }
+        getContext().getContentResolver().notifyChange(uri, null);
+        return count;
+
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        int updateId = dbManager.update(database, values, selection, selectionArgs);
-        return updateId;
+
+        int count = 0;
+        switch (uriMatcher.match(uri)){
+            case STUDENTS:
+                count = dbManager.update(database, values, selection, selectionArgs);
+                break;
+            case STUDENTS_ID:
+                count = dbManager.update(database, values, selection, selectionArgs);
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported URI " + uri );
+        }
+        getContext().getContentResolver().notifyChange(uri, null);
+        return count;
+
     }
 }
