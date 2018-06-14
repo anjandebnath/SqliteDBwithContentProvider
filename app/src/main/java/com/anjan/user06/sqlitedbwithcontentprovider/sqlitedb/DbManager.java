@@ -99,6 +99,16 @@ public class DbManager {
         return studentsList;
     }
 
+    /**
+     * fetch data via content provider
+     * @param queryBuilder
+     * @param db
+     * @param projection
+     * @param selection
+     * @param selectionArgs
+     * @param sortOrder
+     * @return
+     */
     public Cursor fetchStudentsThroughProvider(SQLiteQueryBuilder queryBuilder, SQLiteDatabase db, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         Cursor cursor = queryBuilder.query(db,
@@ -112,14 +122,19 @@ public class DbManager {
     }
 
 
-    public int update(long _id, String name, String dept) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.NAME, name);
-        contentValues.put(DatabaseHelper.DEPT, dept);
-        int i = database.update(DatabaseHelper.TABLE_STUDENTS, contentValues, DatabaseHelper._ID + " = " + _id, null);
+    /**
+     * update data via content provider
+     * @return
+     */
+    public int update(SQLiteDatabase db, ContentValues contentValues, String whereClause, String[] whereArgs) {
+        int i = db.update(DatabaseHelper.TABLE_STUDENTS, contentValues, whereClause, whereArgs);
         return i;
     }
 
+    /**
+     * delete record via content provider
+     * @param _id
+     */
     public void delete(long _id) {
         database.delete(DatabaseHelper.TABLE_STUDENTS, DatabaseHelper._ID + "=" + _id, null);
     }
